@@ -1,202 +1,334 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akshansh Verma - ePortfolio</title>
+    <title>Akshansh Verma</title>
     <style>
-        /* Clean & Minimal CSS Variables */
+        /* --- CSS Variables for Light/Dark Mode --- */
         :root {
-            --bg-color: #121212;
-            --text-main: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --accent: #ffffff;
-            --link-color: #64ffda;
+            --bg-color: #ffffff;
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --accent: #2563eb;
+            --nav-bg: rgba(255, 255, 255, 0.8);
+            --border-color: #e5e7eb;
+            --card-bg: #f9fafb;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --nav-bg: rgba(15, 23, 42, 0.8);
+            --border-color: #334155;
+            --card-bg: #1e293b;
+        }
+
+        /* --- Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+            line-height: 1.7;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
+        /* --- Navigation --- */
         header {
-            padding: 2rem 10%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #333;
-            position: sticky;
-            top: 0;
-            background-color: rgba(18, 18, 18, 0.9);
-            backdrop-filter: blur(10px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: background 0.4s ease, border-color 0.4s ease;
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.25rem;
             text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         nav a {
-            color: var(--text-muted);
             text-decoration: none;
-            margin-left: 20px;
-            transition: color 0.3s;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
-            color: var(--link-color);
+            color: var(--accent);
         }
 
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--card-bg);
+        }
+
+        /* --- Layout & Typography --- */
         main {
-            padding: 4rem 10%;
             max-width: 800px;
-            margin: auto;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem 2rem;
         }
 
         section {
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
         }
 
         h2 {
-            font-size: 2rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 0.5rem;
-            margin-top: 3rem;
-            color: var(--accent);
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--border-color);
+            margin-left: 1rem;
         }
 
         h3 {
-            font-size: 1.2rem;
-            color: var(--accent);
-            margin-bottom: 0.2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
         }
 
         p {
             color: var(--text-muted);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--link-color);
-            margin-bottom: 2rem;
+        .highlight {
+            color: var(--accent);
         }
 
-        ul {
-            color: var(--text-muted);
-            padding-left: 20px;
+        /* --- Cards / Experience --- */
+        .item-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        li {
-            margin-bottom: 0.5rem;
+        .item-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .resume-link {
+        .item-meta {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* --- Buttons --- */
+        .btn {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 10px 20px;
-            border: 1px solid var(--link-color);
-            color: var(--link-color);
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
 
-        .resume-link:hover {
-            background-color: var(--link-color);
-            color: var(--bg-color);
+        .btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
+        /* --- Scroll Animations --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 2rem;
-            border-top: 1px solid #333;
-            color: var(--text-muted);
+            padding: 3rem;
             font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">Akshansh Verma</a>
+        <a href="#" class="logo">Akshansh.</a>
         <nav>
-            <a href="#about">About Me</a>
-            <a href="#career">Career</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">☀️</button>
         </nav>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section id="home">
+        <section id="home" class="animate-on-scroll">
             <h1>Hi, I'm Akshansh.</h1>
-            <div class="subtitle">Computer Security Student | Problem Solver | Cybersecurity Enthusiast</div>
-            <p>Welcome to my e-portfolio. This space serves as a living record of my education, practical work experience, and the technical projects I am building.</p>
+            <p style="font-size: 1.25rem; max-width: 600px;">
+                I'm a <span class="highlight">Computer Security</span> student building efficient systems and analyzing digital landscapes. Driven by hands-on engineering, I focus on adapting to complex technical challenges.
+            </p>
+            <a href="#experience" class="btn">View My Work ↓</a>
         </section>
 
         <!-- About Me Section -->
-        <section id="about">
+        <section id="about" class="animate-on-scroll">
             <h2>About Me</h2>
-            <p>I moved to Canada when I was just a year old[cite: 1]. Growing up caught between my family's heritage and a fast-paced, diverse Canadian environment taught me how to adapt early on[cite: 1]. Navigating these different cultural perspectives built a sense of resilience and open-mindedness that I rely on heavily today[cite: 1].</p>
+            <p>I am currently studying Computer Security at York University's Lassonde School of Engineering[cite: 1]. Rather than memorizing abstract theory, I believe learning happens when you are forced to solve real problems and build software that you actually want to exist.</p>
             
-            <p>Outside of my classes, my core interests act as outlets that keep me balanced: I enjoy playing basketball, working out, and traveling[cite: 1]. If I had to choose one artifact to represent who I am, it would be a heavily stamped page from my passport[cite: 1]. Traveling forces you to figure things out on the fly and navigate unfamiliar situations, which directly parallels how I approach the constantly changing digital landscape in tech[cite: 1].</p>
+            <p>Moving across the world at a young age and navigating different cultures taught me early on how to be highly adaptable[cite: 1]. I carry that same resilience into cybersecurity—an industry where the environment shifts constantly. I learned early on to completely reframe failure; to me, a broken piece of software isn't a permanent roadblock, it is simply a puzzle waiting for a solution[cite: 1].</p>
             
-            <p>I try to channel a realistic, unfazed approach to problem-solving, a mindset I learned from my high school computer science teacher, Mr. Smith[cite: 1]. He taught me to completely reframe failure: a broken piece of software isn't a permanent roadblock, but simply a puzzle waiting for a solution[cite: 1].</p>
+            <p>Away from the computer, I stay balanced by playing basketball, working out, and traveling[cite: 1]. I like understanding how the world works outside of my own field, and throwing myself into unfamiliar environments is the easiest way to figure things out on the fly.</p>
         </section>
 
-        <!-- Career Section -->
-        <section id="career">
-            <h2>Career & Education</h2>
+        <!-- Experience Section -->
+        <section id="experience" class="animate-on-scroll">
+            <h2>Experience & Education</h2>
 
-            <h3>Education</h3>
-            <p><strong>York University, Lassonde School of Engineering</strong><br>
-            <em>B.Sc. in Computer Security</em></p>
-            <ul>
-                <li>Choosing York was a practical decision because the campus was close to home, offering a stable transition into higher education[cite: 1].</li>
-                <li>I chose the Computer Security program because it felt dynamic and hands-on, focusing on adapting to new problems rather than just memorizing theory[cite: 1].</li>
-            </ul>
+            <div class="item-card">
+                <h3>IT Operations - Business/Security Analyst</h3>
+                <div class="item-meta">Hydro One | Present</div>
+                <p>Analyzing IT infrastructure, identifying security vulnerabilities, and optimizing business operations. Bridging the gap between technical security requirements and actionable business strategies.</p>
+            </div>
 
-            <br>
-            <h3>Experience</h3>
-            <p><strong>IT Cybersecurity Analyst (Intern)</strong><br>
-            <em>TechCorp Inc. | May 2023 - Present</em></p>
-            <ul>
-                <li>Monitored network traffic for suspicious activity using SIEM tools.</li>
-                <li>Assisted in performing vulnerability assessments on internal web applications.</li>
-                <li>Applied troubleshooting skills to resolve system alerts, treating each incident as a puzzle to be solved.</li>
-            </ul>
-
-            <a href="#" class="resume-link">Download Résumé (PDF)</a>
+            <div class="item-card">
+                <h3>B.Sc. in Computer Security</h3>
+                <div class="item-meta">York University, Lassonde School of Engineering[cite: 1]</div>
+                <p>Specializing in dynamic, hands-on cybersecurity concepts, networking pipelines, and system defense mechanisms[cite: 1].</p>
+            </div>
+            
+            <a href="resume.pdf" class="btn" style="margin-top: 1rem;">View Full Résumé</a>
         </section>
 
-        <!-- Projects Section (Made up per request) -->
-        <section id="projects">
-            <h2>Projects</h2>
+        <!-- Projects Section -->
+        <section id="projects" class="animate-on-scroll">
+            <h2>Selected Projects</h2>
             
-            <h3>Secure Network Traffic Analyzer</h3>
-            <p>A Python-based script designed to capture and analyze local network packets. It categorizes traffic by protocol and flags unusual spikes that could indicate a basic DDoS attempt.</p>
+            <div class="item-card">
+                <h3>Network Traffic Analyzer</h3>
+                <div class="item-meta">Python, Wireshark, Packet Analysis</div>
+                <p>Engineered a minimalist script designed to capture and analyze local network packets in real-time, categorizing traffic by protocol and flagging unusual spikes indicative of automated attacks.</p>
+            </div>
             
-            <h3>Encrypted Password Manager</h3>
-            <p>A local, terminal-based password vault built in C++. It utilizes AES-256 encryption to securely store user credentials, requiring a master passphrase for decryption.</p>
+            <div class="item-card">
+                <h3>Encrypted Vault</h3>
+                <div class="item-meta">C++, AES-256 Encryption</div>
+                <p>Built a high-performance, terminal-based credential manager focusing on precision and minimalist engineering. Utilizes strict encryption standards to secure user data locally.</p>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Akshansh Verma. Built for Module 9 ePortfolio.</p>
+        <p>&copy; 2026 Akshansh Verma. Minimalist Engineering.</p>
     </footer>
 
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // 1. Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                htmlElement.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '🌙';
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️';
+            }
+        });
+
+        // 2. Scroll Animation Logic (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Stop observing once the animation has triggered
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Trigger animation for the hero section immediately on load
+        window.addEventListener('load', () => {
+            document.getElementById('home').classList.add('is-visible');
+        });
+    </script>
 </body>
 </html>
