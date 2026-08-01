@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akshansh Verma</title>
     <style>
+        /* --- Smooth Scrolling & Offset --- */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;
+        }
+
         /* --- Strict Black & White Theme Variables --- */
         :root {
             --bg-color: #ffffff;
@@ -219,26 +225,26 @@
         <section id="home" class="animate-on-scroll">
             <h1>Hi, I'm Akshansh.</h1>
             <p style="font-size: 1.15rem; max-width: 600px; color: var(--text-main);">
-                I’m a university student studying computer security, and I like to solve complex problems. Driven by a minimalist approach to engineering, I focus on analyzing digital landscapes and bridging the gap between technical requirements and business strategy.
+                I’m a university student studying computer security, and I like to build things and solve complex problems. I lean towards a minimalist approach to engineering, focusing on analyzing systems and figuring out how technical details fit into the bigger business picture.
             </p>
         </section>
 
         <!-- About Me Section -->
         <section id="about" class="animate-on-scroll">
             <h2>About Me</h2>
-            <p>I am a Computer Security student at York University. I prefer a practical approach to learning. Building software and dealing with real world problems forces me to adapt in ways that abstract theory cannot.</p>
+            <p>I am a Computer Security student at York University. I've always preferred a hands-on approach to learning. Dealing with real problems and actually building software forces me to figure things out on the fly, which I find much more useful than just reading theory from a textbook.</p>
             
-            <p>Moving across the world at a young age taught me to be highly adaptable. I carry that same resilience into cybersecurity where the landscape shifts constantly and staying level headed is the only way to find solutions.</p>
+            <p>Moving to Canada at a young age meant I had to learn how to adapt quickly. I try to carry that same mindset into cybersecurity. The tech landscape changes every single day, so being able to stay level-headed when things break is arguably the most important skill to have.</p>
             
-            <p>Away from the computer you can usually find me playing basketball, working out, or traveling. I believe stepping into unfamiliar territory is the best way to keep learning and stay sharp.</p>
+            <p>When I'm not at my computer, I'm usually playing basketball, working out, or planning my next trip. Traveling is one of the best ways to step outside my comfort zone, and I enjoy navigating new places and throwing myself into unfamiliar situations.</p>
         </section>
 
-        <!-- NEW: Goals Section -->
+        <!-- Goals Section -->
         <section id="goals" class="animate-on-scroll">
-            <h2>Professional & Academic Goals</h2>
-            <p>My primary professional goal is to seamlessly bridge the gap between complex technical security controls and high-level business operations. In the near term, I am actively working towards completing my CompTIA Security+ certification and continuing to master cloud infrastructure and compliance frameworks.</p>
+            <h2>Goals</h2>
+            <p>My main focus right now is finding ways to translate complex security concepts into strategies that actually make sense for a business. I'm currently working on my CompTIA Security+ certification to solidify my fundamentals, while also diving deeper into cloud infrastructure.</p>
             
-            <p>Academically, my focus is on deepening my expertise in network forensics and incident response. My overarching long-term goal is to design and architect resilient, automated security postures for enterprise environments that adapt to shifting cyber threats.</p>
+            <p>Long term, I want to specialize in network forensics and incident response. My ultimate goal is to design and build automated security systems that can adapt to new threats without slowing down the people using them.</p>
         </section>
 
         <!-- Experience Section -->
@@ -248,32 +254,32 @@
             <div class="item-card">
                 <h3>IT Operations - Business/Security Analyst</h3>
                 <div class="item-meta">Hydro One | Present</div>
-                <p>Analyzing IT infrastructure, identifying security vulnerabilities, and optimizing business operations. Bridging the gap between technical security requirements and actionable business strategies.</p>
+                <p>Looking at our IT infrastructure to find potential security risks and figure out how to make our operations run smoother. My day-to-day involves acting as a bridge between the technical security team and our broader business goals.</p>
             </div>
 
             <div class="item-card">
                 <h3>B.Sc. in Computer Security</h3>
                 <div class="item-meta">York University, Lassonde School of Engineering</div>
-                <p>Specializing in dynamic, hands-on cybersecurity concepts, networking pipelines, and system defense mechanisms.</p>
+                <p>Focusing heavily on networking, system defense, and practical cybersecurity applications rather than just theory.</p>
             </div>
             
             <a href="resume.pdf" class="btn" download="Akshansh_Verma_Resume.pdf">Download Full Résumé</a>
         </section>
 
-        <!-- UPDATED: Work Portfolio & Course Projects Section -->
+        <!-- Work Portfolio & Course Projects Section -->
         <section id="projects" class="animate-on-scroll">
             <h2>Work Portfolio & Course Projects</h2>
             
             <div class="item-card">
                 <h3>Vulnerability Management Program</h3>
                 <div class="item-meta">Azure / Tenable / BASH / PowerShell</div>
-                <p>Simulated an end-to-end Vulnerability Management Program using Tenable, Azure VMs, PowerShell, and BASH[cite: 3]. Executed authenticated Tenable Nessus scans on Azure servers, identifying vulnerabilities by risk and exploitability[cite: 3]. Developed targeted scripts to address outdated software, insecure protocols, and missing OS updates[cite: 3].</p>
+                <p>I set up a fully simulated vulnerability management environment using Tenable and a few Azure VMs. I ran authenticated Nessus scans to find weak points in the servers, and then wrote custom Bash and PowerShell scripts to automatically patch outdated software and fix bad configurations.</p>
             </div>
             
             <div class="item-card">
                 <h3>Threat Hunt Report: Unauthorized TOR</h3>
                 <div class="item-meta">Microsoft Defender / KQL / Forensics</div>
-                <p>Performed a simulated threat hunt on an enterprise endpoint using Microsoft Defender for Endpoint, KQL, and Azure VMs[cite: 3]. Used KQL to successfully detect a TOR installation, browser execution, and network connections from system logs[cite: 3]. Built a comprehensive timeline of attacker activity confirming suspicious file creation[cite: 3].</p>
+                <p>For this project, I performed a simulated threat hunt on a compromised endpoint. Using Microsoft Defender and KQL, I dug through system logs to detect a hidden TOR installation and track the network connections it made, eventually building a full timeline of what the "attacker" did.</p>
             </div>
         </section>
     </main>
