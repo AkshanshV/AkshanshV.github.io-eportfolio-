@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akshansh Verma</title>
     <style>
-        /* --- CSS Variables for Light/Dark Mode --- */
+        /* --- Strict Black & White Theme Variables --- */
         :root {
             --bg-color: #ffffff;
-            --text-main: #111827;
-            --text-muted: #4b5563;
-            --accent: #2563eb;
-            --nav-bg: rgba(255, 255, 255, 0.8);
-            --border-color: #e5e7eb;
-            --card-bg: #f9fafb;
+            --text-main: #000000;
+            --text-muted: #555555;
+            --border-color: #e5e5e5;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --invert-bg: #000000;
+            --invert-text: #ffffff;
         }
 
         [data-theme="dark"] {
-            --bg-color: #0f172a;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --nav-bg: rgba(15, 23, 42, 0.8);
-            --border-color: #334155;
-            --card-bg: #1e293b;
+            --bg-color: #000000;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #333333;
+            --nav-bg: rgba(0, 0, 0, 0.9);
+            --invert-bg: #ffffff;
+            --invert-text: #000000;
         }
 
         /* --- Base Styles --- */
@@ -31,14 +31,15 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.7;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* --- Navigation --- */
@@ -51,16 +52,16 @@
             justify-content: space-between;
             align-items: center;
             background: var(--nav-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            transition: background 0.4s ease, border-color 0.4s ease;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .logo {
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             text-decoration: none;
             color: var(--text-main);
             letter-spacing: -0.5px;
@@ -75,35 +76,35 @@
         nav a {
             text-decoration: none;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
             transition: color 0.2s ease;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: var(--text-main);
         }
 
         .theme-toggle {
             background: none;
-            border: none;
+            border: 1px solid var(--border-color);
             color: var(--text-main);
             cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: background 0.2s ease;
+            font-size: 0.9rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
         }
 
         .theme-toggle:hover {
-            background: var(--card-bg);
+            background: var(--text-main);
+            color: var(--bg-color);
         }
 
         /* --- Layout & Typography --- */
         main {
-            max-width: 800px;
+            max-width: 760px;
             margin: 0 auto;
-            padding: 8rem 2rem 4rem 2rem;
+            padding: 10rem 2rem 4rem 2rem;
         }
 
         section {
@@ -111,92 +112,77 @@
         }
 
         h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 3rem;
+            font-weight: 700;
             line-height: 1.1;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             letter-spacing: -1px;
         }
 
         h2 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        h2::after {
-            content: "";
-            height: 1px;
-            flex: 1;
-            background: var(--border-color);
-            margin-left: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
         h3 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
         p {
             color: var(--text-muted);
             margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        .highlight {
-            color: var(--accent);
+            font-size: 1rem;
         }
 
         /* --- Cards / Experience --- */
         .item-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 1.5rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .item-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        .item-card:last-child {
+            border-bottom: none;
         }
 
         .item-meta {
-            font-size: 0.9rem;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* --- Buttons --- */
         .btn {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             background-color: transparent;
             color: var(--text-main);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border: 1px solid var(--text-main);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.9rem;
             transition: all 0.2s ease;
+            margin-top: 1rem;
         }
 
         .btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+            background-color: var(--text-main);
+            color: var(--bg-color);
         }
 
         /* --- Scroll Animations --- */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .animate-on-scroll.is-visible {
@@ -208,7 +194,7 @@
         footer {
             text-align: center;
             padding: 3rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
         }
@@ -222,7 +208,7 @@
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">☀️</button>
+            <button class="theme-toggle" id="themeToggle">Light</button>
         </nav>
     </header>
 
@@ -230,20 +216,19 @@
         <!-- Hero Section -->
         <section id="home" class="animate-on-scroll">
             <h1>Hi, I'm Akshansh.</h1>
-            <p style="font-size: 1.25rem; max-width: 600px;">
-                I'm a <span class="highlight">Computer Security</span> student building efficient systems and analyzing digital landscapes. Driven by hands-on engineering, I focus on adapting to complex technical challenges.
+            <p style="font-size: 1.15rem; max-width: 600px; color: var(--text-main);">
+                I’m a university student studying computer security, and I like to solve complex problems. Driven by a minimalist approach to engineering, I focus on analyzing digital landscapes and bridging the gap between technical requirements and business strategy.
             </p>
-            <a href="#experience" class="btn">View My Work ↓</a>
         </section>
 
         <!-- About Me Section -->
         <section id="about" class="animate-on-scroll">
             <h2>About Me</h2>
-            <p>I am currently studying Computer Security at York University's Lassonde School of Engineering[cite: 1]. Rather than memorizing abstract theory, I believe learning happens when you are forced to solve real problems and build software that you actually want to exist.</p>
+            <p>I am currently studying Computer Security at York University's Lassonde School of Engineering. My journey into tech started with a simple realization: a broken system isn't a permanent roadblock, but a puzzle waiting to be solved. I prefer a hands-on approach to learning—building software and dealing with real-world problems forces me to adapt in ways that abstract theory cannot.</p>
             
-            <p>Moving across the world at a young age and navigating different cultures taught me early on how to be highly adaptable[cite: 1]. I carry that same resilience into cybersecurity—an industry where the environment shifts constantly. I learned early on to completely reframe failure; to me, a broken piece of software isn't a permanent roadblock, it is simply a puzzle waiting for a solution[cite: 1].</p>
+            <p>Moving across the world at a young age and growing up in a fast-paced environment taught me how to be highly adaptable early on. I carry that same resilience into cybersecurity, an industry where the landscape shifts constantly and staying level-headed is the only way to find solutions.</p>
             
-            <p>Away from the computer, I stay balanced by playing basketball, working out, and traveling[cite: 1]. I like understanding how the world works outside of my own field, and throwing myself into unfamiliar environments is the easiest way to figure things out on the fly.</p>
+            <p>Away from the computer, I try to maintain a strong balance. You can usually find me playing basketball, working out, or traveling. I believe stepping into unfamiliar territory—whether it's navigating a new country to add a stamp to my passport or debugging complex infrastructure—is the best way to keep learning and stay sharp.</p>
         </section>
 
         <!-- Experience Section -->
@@ -258,11 +243,11 @@
 
             <div class="item-card">
                 <h3>B.Sc. in Computer Security</h3>
-                <div class="item-meta">York University, Lassonde School of Engineering[cite: 1]</div>
-                <p>Specializing in dynamic, hands-on cybersecurity concepts, networking pipelines, and system defense mechanisms[cite: 1].</p>
+                <div class="item-meta">York University, Lassonde School of Engineering</div>
+                <p>Specializing in dynamic, hands-on cybersecurity concepts, networking pipelines, and system defense mechanisms.</p>
             </div>
             
-            <a href="resume.pdf" class="btn" style="margin-top: 1rem;">View Full Résumé</a>
+            <a href="resume.pdf" class="btn">View Full Résumé</a>
         </section>
 
         <!-- Projects Section -->
@@ -271,20 +256,20 @@
             
             <div class="item-card">
                 <h3>Network Traffic Analyzer</h3>
-                <div class="item-meta">Python, Wireshark, Packet Analysis</div>
-                <p>Engineered a minimalist script designed to capture and analyze local network packets in real-time, categorizing traffic by protocol and flagging unusual spikes indicative of automated attacks.</p>
+                <div class="item-meta">Python / Packet Analysis</div>
+                <p>Engineered a script designed to capture and analyze local network packets in real-time, categorizing traffic by protocol and flagging unusual spikes indicative of automated attacks.</p>
             </div>
             
             <div class="item-card">
                 <h3>Encrypted Vault</h3>
-                <div class="item-meta">C++, AES-256 Encryption</div>
+                <div class="item-meta">C++ / AES-256 Encryption</div>
                 <p>Built a high-performance, terminal-based credential manager focusing on precision and minimalist engineering. Utilizes strict encryption standards to secure user data locally.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Akshansh Verma. Minimalist Engineering.</p>
+        <p>&copy; 2026 Akshansh Verma.</p>
     </footer>
 
     <!-- JavaScript for Interactivity -->
@@ -293,18 +278,21 @@
         const themeToggle = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
 
+        // Set initial button text based on default theme (dark)
+        themeToggle.textContent = 'Light Mode';
+
         themeToggle.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-theme');
             if (currentTheme === 'dark') {
                 htmlElement.setAttribute('data-theme', 'light');
-                themeToggle.textContent = '🌙';
+                themeToggle.textContent = 'Dark Mode';
             } else {
                 htmlElement.setAttribute('data-theme', 'dark');
-                themeToggle.textContent = '☀️';
+                themeToggle.textContent = 'Light Mode';
             }
         });
 
-        // 2. Scroll Animation Logic (Intersection Observer)
+        // 2. Scroll Animation Logic
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -315,7 +303,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    // Stop observing once the animation has triggered
                     observer.unobserve(entry.target);
                 }
             });
@@ -325,7 +312,7 @@
             observer.observe(section);
         });
 
-        // Trigger animation for the hero section immediately on load
+        // Trigger animation for the hero section immediately
         window.addEventListener('load', () => {
             document.getElementById('home').classList.add('is-visible');
         });
