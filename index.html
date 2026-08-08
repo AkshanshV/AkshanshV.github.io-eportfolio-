@@ -138,23 +138,35 @@ li{margin-bottom:0.5rem;}
 .about-wrap{max-width:760px;}
 .tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1.2rem;}
 
-.img-placeholder{
-  border:1.5px dashed var(--line);
-  border-radius:12px;
-  background:var(--paper-raised);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;
-  color:var(--muted);text-align:center;padding:2rem;
-  transition:border-color .25s ease;
-}
-.img-placeholder:hover{border-color:var(--accent);}
-.img-placeholder .ph-label{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;}
-.img-placeholder .ph-path{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--accent);}
-.img-placeholder.about-ph{aspect-ratio:4/5;}
-.img-placeholder.banner-ph{aspect-ratio:16/5;margin-bottom:2rem;}
-@media (max-width:640px){.img-placeholder.about-ph{aspect-ratio:4/3;}}
 .tag{
   font-family:'IBM Plex Mono',monospace;font-size:0.72rem;padding:0.28rem 0.65rem;
   background:var(--accent-soft);color:var(--accent);border-radius:100px;font-weight:500;
+}
+
+/* Image styling for About and Projects sections */
+.about-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 640px) {
+  .about-img { 
+    aspect-ratio: 4/3; 
+  }
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/5;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin-bottom: 2rem;
 }
 
 /* ---------- LOG / TIMELINE (Career) ---------- */
@@ -316,10 +328,7 @@ footer{
         <span class="tag">Lassonde School of Engineering</span>
       </div>
       </div>
-      <div class="img-placeholder about-ph">
-        <span class="ph-label">Image placeholder</span>
-        <span class="ph-path">images/about.jpg</span>
-      </div>
+      <img src="https://www.smartertravel.com/singapore-things-attractions-must-see/" alt="Singapore" class="about-img" />
     </div>
   </section>
 
@@ -436,10 +445,7 @@ footer{
   <section id="projects" class="reveal">
     <div class="eyebrow">Course and independent projects</div>
     <h2>Selected work</h2>
-    <div class="img-placeholder banner-ph">
-      <span class="ph-label">Image placeholder</span>
-      <span class="ph-path">images/projects-banner.jpg</span>
-    </div>
+    <img src="https://www.odysseys-unlimited.com/tours/europe/european-tapestry/" alt="European Tapestry" class="banner-img" />
     <div class="project-grid">
 
       <div class="project-card">
