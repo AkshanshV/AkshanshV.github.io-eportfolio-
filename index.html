@@ -171,7 +171,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* --- Intro & Video Container --- */
+        /* --- Intro & Purpose Container --- */
         .intro-text {
             font-size: 1.15rem;
             max-width: 700px;
@@ -185,20 +185,6 @@
             border-left: 4px solid var(--text-main);
             margin-bottom: 2rem;
             font-style: italic;
-        }
-
-        .video-container {
-            width: 100%;
-            max-width: 700px;
-            aspect-ratio: 16/9;
-            background-color: var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            color: var(--text-muted);
-            font-weight: 500;
         }
 
         /* --- Cards & Frameworks --- */
@@ -301,8 +287,9 @@
                 <a href="#about">About Me</a>
                 <a href="#career">Career</a>
                 <a href="#goals">Goals & Portfolios</a>
-                <a href="#projects">Course Projects</a>
+                <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
+                <a href="https://github.com/akshanshv" target="_blank">GitHub</a>
                 <button class="theme-toggle" id="themeToggle">Light</button>
             </nav>
         </div>
@@ -317,13 +304,8 @@
             </div>
             
             <p class="intro-text">
-                I’m a university student studying computer security. I lean towards a minimalist approach to engineering, focusing on analyzing systems, figuring out how technical details fit into the bigger business picture, and driving proactive problem-solving through automation[cite: 1].
+                I am a 3rd-year computer security student at York University[cite: 2, 5]. I lean towards a minimalist approach to engineering, focusing on analyzing systems, figuring out how technical details fit into the bigger business picture, and driving proactive problem-solving through automation[cite: 1].
             </p>
-
-            <div class="video-container">
-                <!-- [Instructor Requirement] Include your About Me video in your introduction -->
-                <span>▶ Play "About Me" Video</span>
-            </div>
         </section>
 
         <!-- A: About Me Section -->
@@ -345,7 +327,7 @@
 
         <!-- B: Career Section -->
         <section id="career" class="animate-on-scroll">
-            <h2>B. Career: Education & Experience</h2>
+            <h2>B. Career: Education, Certifications & Experience</h2>
             
             <h3>Education</h3>
             <div class="item-card">
@@ -353,7 +335,18 @@
                 <div class="item-meta"><span>York University - Lassonde School of Engineering</span> <span>Sept 2023 - Present</span></div>
                 <ul>
                     <li><strong>Relevant Coursework:</strong> Computer Networks, Computer Organization, Data Structures & Algorithms, OOP, Intro to Computer Security[cite: 5].</li>
-                    <li><strong>Certifications:</strong> ISO 9001 (QMS), ISO 27001 (ISMS), ISO 14001 (EMS), CompTIA Security+ (in-progress)[cite: 5].</li>
+                </ul>
+            </div>
+
+            <h3>Certifications</h3>
+            <div class="item-card">
+                <h4>Professional & Quality Standards</h4>
+                <div class="item-meta"><span>Compliance & Security</span></div>
+                <ul>
+                    <li>ISO 9001 (Quality Management Systems - QMS)[cite: 5]</li>
+                    <li>ISO 27001 (Information Security Management Systems - ISMS)[cite: 5]</li>
+                    <li>ISO 14001 (Environmental Management Systems - EMS)[cite: 5]</li>
+                    <li>CompTIA Security+ (In-progress)[cite: 5]</li>
                 </ul>
             </div>
 
@@ -420,7 +413,7 @@
 
         <!-- E: Course Projects Section -->
         <section id="projects" class="animate-on-scroll">
-            <h2>E. Course & Work Projects</h2>
+            <h2>E. Course & Independent Projects</h2>
             
             <div class="item-card">
                 <h3>Vulnerability Management Program</h3>
@@ -455,6 +448,38 @@
                     <p><strong>Reflect:</strong> This simulated environment allowed me to practice combining existing knowledge to detect attack vectors, enhancing my ability to identify the significance of information regarding a specific security incident[cite: 3].</p>
                 </div>
             </div>
+
+            <div class="item-card">
+                <h3>Student Study Tracker</h3>
+                <div class="tags-container">
+                    <span class="tag">Design</span>
+                    <span class="tag">Life-Long Learning</span>
+                </div>
+                <div class="item-meta">Python / React / SQLite</div>
+                <ul>
+                    <li>Designed and developed a productivity web application optimized to help students organize study sessions, track focus intervals using Pomodoro techniques, and analyze study habits.</li>
+                    <li>Implemented a responsive frontend interface with React and a secure backend database using Python and SQLite for data persistence.</li>
+                </ul>
+                <div class="reflection-box">
+                    <p><strong>Reflect:</strong> Building this tracker allowed me to apply user-centric design principles, ensuring the interface remained clean, intuitive, and effective for managing demanding university workloads.</p>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <h3>Full-Stack E-Commerce Platform</h3>
+                <div class="tags-container">
+                    <span class="tag">Design</span>
+                    <span class="tag">Economics & Project Management</span>
+                </div>
+                <div class="item-meta">JavaScript / Node.js / Express / MongoDB</div>
+                <ul>
+                    <li>Engineered a fully functional e-commerce web application featuring a dynamic product catalog, user authentication, shopping cart management, and secure checkout simulation.</li>
+                    <li>Optimized database queries and integrated RESTful APIs to ensure rapid page load speeds and smooth navigation across desktop and mobile devices.</li>
+                </ul>
+                <div class="reflection-box">
+                    <p><strong>Reflect:</strong> This project deepened my understanding of full-stack architecture, secure user data handling, and the software development lifecycle required to deploy scalable web solutions.</p>
+                </div>
+            </div>
         </section>
 
         <!-- Contact Section -->
@@ -463,14 +488,15 @@
             <p>I am always open to discussing new opportunities, collaborations, or simply having a chat about tech and security.</p>
             
             <div>
-                <a href="mailto:AkshanshV28@gmail.com" class="btn">Email Me</a>
+                <a href="mailto:aksh42@my.yorku.ca" class="btn">Email Me</a>
                 <a href="https://www.linkedin.com/in/akshanshv" target="_blank" class="btn">LinkedIn</a>
+                <a href="https://github.com/akshanshv" target="_blank" class="btn">GitHub</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Akshansh Verma | AkshanshV28@gmail.com</p>
+        <p>Akshansh Verma | aksh42@my.yorku.ca</p>
         <p>Last Updated: August 7, 2026</p>
     </footer>
 
