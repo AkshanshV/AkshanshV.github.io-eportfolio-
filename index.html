@@ -1,547 +1,448 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akshansh Verma | ePortfolio</title>
-    <style>
-        /* --- Smooth Scrolling & Offset --- */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 120px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akshansh Verma — ePortfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F4EF;
+  --paper-raised:#FBFAF7;
+  --ink:#181A1E;
+  --muted:#63666D;
+  --line:#DFDBD1;
+  --accent:#2A46C4;
+  --accent-soft:#E9EBFA;
+  --ok:#1F8A54;
+  --chip:#14161B;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:96px;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',sans-serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.01em;color:var(--ink);}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;}
 
-        /* --- Strict Black & White Theme Variables --- */
-        :root {
-            --bg-color: #ffffff;
-            --text-main: #000000;
-            --text-muted: #555555;
-            --border-color: #e5e5e5;
-            --nav-bg: rgba(255, 255, 255, 0.95);
-            --card-bg: #fafafa;
-            --tag-bg: #eeeeee;
-        }
+/* ---------- NAV ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(246,244,239,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:960px;margin:0 auto;padding:1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;text-decoration:none;}
+.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:6px;box-shadow:0 0 0 3px rgba(31,138,84,0.15);}
+nav.links{display:flex;gap:1.4rem;flex-wrap:wrap;}
+nav.links a{
+  font-family:'IBM Plex Mono',monospace;font-size:0.78rem;text-decoration:none;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.06em;
+  padding:0.3rem 0;border-bottom:1px solid transparent;
+  transition:color .2s ease, border-color .2s ease;
+}
+nav.links a:hover{color:var(--ink);border-color:var(--accent);}
 
-        [data-theme="dark"] {
-            --bg-color: #000000;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --border-color: #333333;
-            --nav-bg: rgba(0, 0, 0, 0.95);
-            --card-bg: #111111;
-            --tag-bg: #222222;
-        }
+/* ---------- LAYOUT ---------- */
+main{max-width:960px;margin:0 auto;padding:7.5rem 1.5rem 5rem;}
+section{margin-bottom:6rem;scroll-margin-top:100px;}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:0.75rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--accent);margin-bottom:0.7rem;display:flex;align-items:center;gap:0.5rem;
+}
+.eyebrow::before{content:'//';color:var(--muted);}
+h2{font-size:1.5rem;font-weight:600;margin-bottom:1.6rem;}
+p{color:var(--muted);margin-bottom:1.1rem;max-width:68ch;}
+ul{color:var(--muted);padding-left:1.3rem;margin-bottom:1rem;}
+li{margin-bottom:0.4rem;}
 
-        /* --- Base Styles --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
-        }
+/* ---------- HERO ---------- */
+.hero{padding-top:1rem;}
+.hero .status-line{
+  font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--ok);
+  background:rgba(31,138,84,0.08);display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.35rem 0.7rem;border-radius:100px;margin-bottom:1.6rem;border:1px solid rgba(31,138,84,0.25);
+}
+.hero h1{font-size:3rem;font-weight:700;line-height:1.08;margin-bottom:1.1rem;max-width:14ch;}
+.hero .role{font-size:1.15rem;color:var(--ink);margin-bottom:1.4rem;max-width:44ch;}
+.hero .role span{color:var(--accent);font-weight:600;}
+.hero p.lede{font-size:1.02rem;max-width:58ch;}
+.hero-links{display:flex;gap:0.9rem;margin-top:1.6rem;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.7rem 1.3rem;border:1px solid var(--ink);border-radius:6px;
+  text-decoration:none;font-weight:500;font-size:0.9rem;color:var(--ink);
+  transition:all .2s ease;
+}
+.btn:hover{background:var(--ink);color:var(--paper);}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+.btn.primary:hover{background:#1E36A0;border-color:#1E36A0;}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            -webkit-font-smoothing: antialiased;
-        }
+/* purpose box */
+.purpose{
+  margin-top:3rem;padding:1.6rem 1.8rem;background:var(--paper-raised);
+  border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;
+}
+.purpose .eyebrow{margin-bottom:0.5rem;}
+.purpose p{margin-bottom:0;color:var(--ink);font-size:0.98rem;}
 
-        /* --- Navigation --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--nav-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1fr;gap:2rem;}
+.pull-quote{
+  font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:500;color:var(--ink);
+  border-left:2px solid var(--accent);padding-left:1.1rem;margin:1.8rem 0;max-width:52ch;
+}
+.tags-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.6rem;margin-bottom:1.6rem;}
+.tag{
+  font-family:'IBM Plex Mono',monospace;font-size:0.72rem;padding:0.28rem 0.6rem;
+  background:var(--accent-soft);color:var(--accent);border-radius:4px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.04em;
+}
+.tag.dark{background:var(--chip);color:#fff;}
 
-        .header-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* ---------- LOG / TIMELINE (Career) ---------- */
+.log-entry{
+  display:grid;grid-template-columns:110px 1fr;gap:1.3rem;
+  padding:1.5rem 0;border-top:1px solid var(--line);
+}
+.log-entry:last-child{border-bottom:1px solid var(--line);}
+.log-time{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--muted);padding-top:0.2rem;}
+.log-time .range{display:block;color:var(--ink);font-weight:500;margin-top:0.15rem;}
+.log-title{font-size:1.05rem;font-weight:600;margin-bottom:0.2rem;}
+.log-org{font-size:0.85rem;color:var(--accent);font-weight:500;margin-bottom:0.7rem;font-family:'IBM Plex Mono',monospace;}
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-decoration: none;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-        }
+@media (max-width:640px){
+  .log-entry{grid-template-columns:1fr;gap:0.4rem;}
+  .log-time{display:flex;gap:0.5rem;}
+  .log-time .range{margin-top:0;}
+}
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-        }
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.8rem;margin-top:1rem;}
+.cert-chip{
+  background:var(--paper-raised);border:1px solid var(--line);border-radius:6px;
+  padding:0.9rem 1rem;font-size:0.88rem;
+}
+.cert-chip strong{display:block;font-size:0.9rem;margin-bottom:0.15rem;}
+.cert-chip span{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--muted);}
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-            font-weight: 500;
-        }
+/* ---------- GOALS / REFLECTION CARDS ---------- */
+.competency-card{
+  background:var(--paper-raised);border:1px solid var(--line);border-radius:8px;
+  padding:1.9rem 2rem;margin-bottom:1.8rem;
+}
+.competency-card h3{font-size:1.15rem;margin-bottom:0.3rem;}
+.competency-meta{
+  font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--accent);
+  text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem;
+}
+.goal-line{
+  font-size:0.92rem;color:var(--ink);background:var(--accent-soft);
+  padding:0.7rem 0.9rem;border-radius:5px;margin-bottom:1.1rem;
+}
+.goal-line strong{color:var(--accent);}
+.rrr{margin-top:1.3rem;padding-top:1.2rem;border-top:1px dashed var(--line);}
+.rrr-row{display:grid;grid-template-columns:90px 1fr;gap:1rem;margin-bottom:0.9rem;}
+.rrr-row .label{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;padding-top:0.15rem;}
+.rrr-row p{margin-bottom:0;font-size:0.92rem;}
+@media (max-width:640px){.rrr-row{grid-template-columns:1fr;gap:0.2rem;}}
 
-        nav a:hover {
-            color: var(--text-main);
-        }
+/* ---------- PROJECTS ---------- */
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.3rem;}
+.project-card{
+  background:var(--paper-raised);border:1px solid var(--line);border-radius:8px;
+  padding:1.6rem 1.7rem;display:flex;flex-direction:column;
+}
+.project-card h3{font-size:1.05rem;margin-bottom:0.6rem;}
+.stack{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--muted);margin-bottom:0.9rem;}
+.project-card ul{margin-bottom:0.8rem;font-size:0.9rem;}
+.project-reflect{
+  margin-top:auto;padding-top:0.9rem;border-top:1px dashed var(--line);
+  font-size:0.86rem;color:var(--ink);font-style:italic;
+}
 
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            cursor: pointer;
-            font-size: 0.8rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
+/* ---------- CONTACT / FOOTER ---------- */
+.contact-box{
+  background:var(--chip);color:#fff;border-radius:10px;padding:2.4rem 2.2rem;
+  display:flex;flex-direction:column;gap:1rem;
+}
+.contact-box h2{color:#fff;border:none;margin-bottom:0.4rem;}
+.contact-box p{color:#B7BAC2;margin-bottom:0.4rem;}
+.contact-box .hero-links .btn{border-color:#3a3d44;color:#fff;}
+.contact-box .hero-links .btn:hover{background:#fff;color:var(--chip);}
+.contact-box .btn.primary{background:var(--accent);border-color:var(--accent);}
 
-        .theme-toggle:hover {
-            background: var(--text-main);
-            color: var(--bg-color);
-        }
+footer{
+  text-align:center;padding:2.2rem 1.5rem;font-size:0.78rem;color:var(--muted);
+  border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;
+}
 
-        /* --- Layout & Typography --- */
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem 2rem;
-        }
-
-        section {
-            margin-bottom: 5rem;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        h2 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        p {
-            color: var(--text-muted);
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-        }
-        
-        ul {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Intro & Purpose Container --- */
-        .intro-text {
-            font-size: 1.15rem;
-            max-width: 700px;
-            color: var(--text-main);
-            margin-bottom: 2rem;
-        }
-        
-        .purpose-statement {
-            padding: 1.5rem;
-            background-color: var(--card-bg);
-            border-left: 4px solid var(--text-main);
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        /* --- Cards & Frameworks --- */
-        .item-card {
-            background-color: var(--card-bg);
-            padding: 1.8rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .item-meta {
-            font-size: 0.85rem;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            font-family: monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .tags-container {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-        
-        .tag {
-            font-size: 0.75rem;
-            padding: 0.2rem 0.6rem;
-            background-color: var(--tag-bg);
-            border-radius: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* --- Reflection Framework --- */
-        .reflection-box {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px dashed var(--border-color);
-        }
-        
-        .reflection-box strong {
-            color: var(--text-main);
-        }
-
-        /* --- Buttons --- */
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--text-main);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            margin-top: 1rem;
-            margin-right: 0.5rem;
-            border-radius: 4px;
-        }
-
-        .btn:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-        }
-
-        /* --- Scroll Animations --- */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <a href="#home" class="logo">Akshansh Verma</a>
-            <nav>
-                <a href="#about">About Me</a>
-                <a href="#career">Career</a>
-                <a href="#goals">Goals & Portfolios</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <a href="https://github.com/akshanshv" target="_blank">GitHub</a>
-                <button class="theme-toggle" id="themeToggle">Light</button>
-            </nav>
+<header>
+  <div class="nav-inner">
+    <a href="#home" class="brand"><span class="status-dot"></span>Akshansh Verma</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#career">Career</a>
+      <a href="#goals">Goals &amp; Reflections</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="hero reveal">
+    <div class="status-line mono"><span class="status-dot"></span>OPEN TO OPPORTUNITIES — FALL 2026</div>
+    <h1>Akshansh Verma</h1>
+    <p class="role">Computer Security student at <span>York University</span>, currently working as an IT Operations Business Analyst at Hydro One.</p>
+    <p class="lede">I lean toward a minimalist approach to engineering — analyzing systems, connecting technical detail to the bigger business picture, and pushing for proactive automation over manual fixes.</p>
+    <div class="hero-links">
+      <a href="#career" class="btn primary">View my work →</a>
+      <a href="mailto:AkshanshV28@gmail.com" class="btn">Email me</a>
+      <a href="https://www.linkedin.com/in/akshanshv" target="_blank" class="btn">LinkedIn</a>
+    </div>
+
+    <div class="purpose">
+      <div class="eyebrow mono">portfolio purpose</div>
+      <p>This ePortfolio collects, organizes, and reflects on my academic work and professional growth through my Computer Security degree and co-op placements — tracking my transition from theoretical coursework to practical, enterprise-scale problem-solving in IT and cybersecurity.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <div class="eyebrow">about me</div>
+    <h2>Adapting is the whole job</h2>
+    <div class="about-grid">
+      <div>
+        <p>I moved to Canada at one year old, which meant growing up caught between cultures in a fast-paced environment — it taught me how to adapt early, and that same instinct now shapes how I work in security, where the landscape never holds still.</p>
+        <p>I chose York University for practical reasons — it offered a comfortable, close-to-home transition into higher education — but the Computer Security program at Lassonde is what stuck. It rewarded hands-on, dynamic problem-solving over memorizing theory, which is exactly how I like to learn.</p>
+
+        <div class="pull-quote">"A broken piece of software isn't a permanent roadblock — it's a puzzle waiting for a targeted solution."</div>
+
+        <p>That reframe came from my high school computer science teacher, Mr. Smith, and it's still how I approach debugging a program, adjusting to a new city, or starting a new job: stay level-headed, and solve the puzzle in front of you.</p>
+
+        <p>Outside of coursework, <strong style="color:var(--ink)">traveling</strong> keeps that adaptability sharp — new cultures and unfamiliar situations force you to figure things out on the fly, the same muscle I use navigating a constantly shifting digital landscape. <strong style="color:var(--ink)">Basketball and working out</strong> do the opposite job: they build the discipline and focus to stay steady when the environment does shift.</p>
+
+        <div class="tags-row">
+          <span class="tag">B.Sc. (Hons) Computer Security, Co-op</span>
+          <span class="tag">Expected Grad 2027</span>
+          <span class="tag dark">Lassonde School of Engineering</span>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <main>
-        <!-- Home / Intro Section -->
-        <section id="home" class="animate-on-scroll">
-            <h1>Hi, I'm Akshansh.</h1>
-            <div class="purpose-statement">
-                <strong>Portfolio Purpose:</strong> The purpose of this e-portfolio is to collect, organize, and reflect on my academic work and professional growth throughout my Computer Security degree and co-op placements. This living document showcases my transition from theoretical learning to practical enterprise problem-solving.
-            </div>
-            
-            <p class="intro-text">
-                I am a 3rd-year computer security student at York University. I lean towards a minimalist approach to engineering, focusing on analyzing systems, figuring out how technical details fit into the bigger business picture, and driving proactive problem-solving through automation.
-            </p>
-        </section>
+  <!-- CAREER -->
+  <section id="career" class="reveal">
+    <div class="eyebrow">career</div>
+    <h2>Education, certifications &amp; experience</h2>
 
-        <!-- A: About Me Section -->
-        <section id="about" class="animate-on-scroll">
-            <h2>A. About Me</h2>
-            <p>I am currently pursuing my Bachelor of Science (Honours) in Computer Security (Co-op) at York University's Lassonde School of Engineering, with an expected graduation in 2027. Choosing York was a practical decision that offered a comfortable transition into higher education, but I quickly realized that the Computer Security program appealed to my preference for hands-on, dynamic learning over just memorizing theory.</p>
-            
-            <p>Moving to Canada at one year old meant growing up in a fast-paced environment caught between cultures, which taught me how to adapt early on. I carry that same mindset of resilience and open-mindedness into cybersecurity. The tech landscape changes constantly, and dealing with unpredictable situations is at the core of IT work.</p>
-            
-            <p>My confidence in tackling complex problems comes directly from my high school computer science teacher, Mr. Smith. He taught me to completely reframe failure—showing me that a broken piece of software isn't a permanent roadblock, but simply a puzzle waiting for a targeted solution.</p>
+    <h3 style="font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-family:'IBM Plex Mono',monospace;margin-bottom:0.5rem;">Education</h3>
+    <div class="log-entry" style="border-top:none;padding-top:0;">
+      <div class="log-time">SEPT 2023<span class="range">— PRESENT</span></div>
+      <div>
+        <div class="log-title">B.Sc. (Honours), Computer Security (Co-op)</div>
+        <div class="log-org">York University — Lassonde School of Engineering, North York, ON</div>
+        <p style="margin-bottom:0;">Relevant coursework: Computer Networks, Computer Organization, Data Structures &amp; Algorithms, Object-Oriented Programming, Intro to Computer Security.</p>
+      </div>
+    </div>
 
-            <h3>Hobbies & Interests</h3>
-            <p>When I am not at my computer, my core interests act as outlets that keep me balanced and heavily influence my professional mindset:</p>
-            <ul>
-                <li><strong>Traveling:</strong> Navigating new cultures and unfamiliar situations forces me to figure things out on the fly. The adaptability I learn from traveling directly parallels how I navigate the constantly changing digital landscape in tech.</li>
-                <li><strong>Basketball & Working Out:</strong> Staying dedicated to these passions has taught me the importance of a strong work ethic and the ability to stay focused when the environment shifts.</li>
-            </ul>
-        </section>
+    <h3 style="font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-family:'IBM Plex Mono',monospace;margin:2.2rem 0 0.8rem;">Certifications</h3>
+    <div class="cert-grid">
+      <div class="cert-chip"><strong>ISO 9001</strong><span>Quality Management Systems</span></div>
+      <div class="cert-chip"><strong>ISO 27001</strong><span>Information Security Management</span></div>
+      <div class="cert-chip"><strong>ISO 14001</strong><span>Environmental Management</span></div>
+      <div class="cert-chip"><strong>CompTIA Security+</strong><span>In progress</span></div>
+    </div>
 
-        <!-- B: Career Section -->
-        <section id="career" class="animate-on-scroll">
-            <h2>B. Career: Education, Certifications & Experience</h2>
-            
-            <h3>Education</h3>
-            <div class="item-card">
-                <h4>Bachelor of Science (Honours), Computer Security (Co-op)</h4>
-                <div class="item-meta"><span>York University - Lassonde School of Engineering</span> <span>Sept 2023 - Present</span></div>
-                <ul>
-                    <li><strong>Relevant Coursework:</strong> Computer Networks, Computer Organization, Data Structures & Algorithms, OOP, Intro to Computer Security.</li>
-                </ul>
-            </div>
+    <h3 style="font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-family:'IBM Plex Mono',monospace;margin:2.2rem 0 0;">Experience</h3>
 
-            <h3>Certifications</h3>
-            <div class="item-card">
-                <h4>Professional & Quality Standards</h4>
-                <div class="item-meta"><span>Compliance & Security</span></div>
-                <ul>
-                    <li>ISO 9001 (Quality Management Systems - QMS)</li>
-                    <li>ISO 27001 (Information Security Management Systems - ISMS)</li>
-                    <li>ISO 14001 (Environmental Management Systems - EMS)</li>
-                    <li>CompTIA Security+ (In-progress)</li>
-                </ul>
-            </div>
+    <div class="log-entry">
+      <div class="log-time">MAY 2026<span class="range">— DEC 2026</span></div>
+      <div>
+        <div class="log-title">IT Operations — Business Analyst</div>
+        <div class="log-org">Hydro One</div>
+        <ul>
+          <li>Deployed enterprise hardware via depot workflows and resolved Tier 2 help desk tickets to ensure seamless onboarding.</li>
+          <li>Tested and packaged internal software into user-friendly installation packages for enterprise portal deployment.</li>
+          <li>Executed vulnerability management procedures — tracking, analyzing, and remediating security vulnerabilities across endpoints to maintain compliance.</li>
+        </ul>
+      </div>
+    </div>
 
-            <h3>Experience</h3>
-            <div class="item-card">
-                <h4>IT Operation - Business Analyst</h4>
-                <div class="item-meta"><span>Hydro One</span> <span>May 2026 - Dec 2026</span></div>
-                <ul>
-                    <li>Deployed enterprise hardware via depot workflows and resolved Tier 2 help desk tickets to ensure seamless onboarding.</li>
-                    <li>Tested and packaged internal software into user-friendly installation packages for enterprise portal deployment.</li>
-                    <li>Executed vulnerability management procedures by tracking, analyzing, and remediating security vulnerabilities across endpoints to maintain compliance.</li>
-                </ul>
-            </div>
+    <div class="log-entry">
+      <div class="log-time">MAY 2025<span class="range">— AUG 2025</span></div>
+      <div>
+        <div class="log-title">ISO Compliance Intern</div>
+        <div class="log-org">Cure Management Private Ltd.</div>
+        <ul>
+          <li>Conducted gap assessments across ISO 9001 and ISO/IEC 27001, identifying nonconformities through interviews and evidence verification.</li>
+          <li>Implemented an Integrated Management System that streamlined audit tracking and reduced CAPA response time.</li>
+        </ul>
+      </div>
+    </div>
 
-            <div class="item-card">
-                <h4>ISO Compliance Intern</h4>
-                <div class="item-meta"><span>Cure Management Private Ltd.</span> <span>May 2025 - Aug 2025</span></div>
-                <ul>
-                    <li>Conducted gap assessments across ISO 9001 and ISO/IEC 27001 standards, identifying nonconformities through interviews and evidence verification.</li>
-                    <li>Implemented an Integrated Management System that streamlined audit tracking and reduced response time on CAPA.</li>
-                </ul>
-            </div>
+    <div class="log-entry">
+      <div class="log-time">MAR 2025<span class="range">— MAY 2025</span></div>
+      <div>
+        <div class="log-title">Front End Development Intern</div>
+        <div class="log-org">Self Justice</div>
+        <ul>
+          <li>Optimized WordPress site performance and built a chatbot-style support interface that improved user engagement by 25%.</li>
+        </ul>
+      </div>
+    </div>
 
-            <div class="item-card">
-                <h4>Front End Development Intern</h4>
-                <div class="item-meta"><span>Self Justice</span> <span>March 2025 - May 2025</span></div>
-                <ul>
-                    <li>Optimized WordPress site performance and built a chatbot-style support interface that improved user engagement by 25%.</li>
-                </ul>
-            </div>
-            
-            <a href="resume.pdf" class="btn" download="Akshansh_Verma_Resume.pdf">Download Full Résumé</a>
-        </section>
+    <div style="margin-top:1.8rem;">
+      <a href="resume.pdf" class="btn primary" download="Akshansh_Verma_Resume.pdf">Download résumé (PDF) ↓</a>
+    </div>
+  </section>
 
-        <!-- C & D: Goals, Portfolios & Reflections Section -->
-        <section id="goals" class="animate-on-scroll">
-            <h2>C & D. Goals, Portfolios & Reflections</h2>
-            <p>These portfolios collect evidence documenting my progress across core undergraduate competencies, applying critical thought to how my skills have evolved in the workplace.</p>
+  <!-- GOALS & REFLECTIONS -->
+  <section id="goals" class="reveal">
+    <div class="eyebrow">goals &amp; reflections</div>
+    <h2>Where I've grown, and what's still in progress</h2>
+    <p>These portfolios track my development against three undergraduate competencies I set out to grow this term. Rather than listing every self-assessment I completed, each one below pairs a real workplace goal with a specific artifact and an honest reflection on what it actually taught me.</p>
 
-            <div class="item-card">
-                <h3>Portfolio: Building Credentials (Automation & Problem Solving)</h3>
-                <p><strong>Goal:</strong> Transition my theoretical IT knowledge into practical expertise by mastering core platforms like Microsoft Intune, Entra, and Tenable, moving beyond manual fixes to proactive automation.</p>
-                
-                <div class="reflection-box">
-                    <h4>Artifact Reflection: Vulnerability Remediation Scripting</h4>
-                    <p><strong>Retell:</strong> During my rotation at Hydro One, I was tasked with addressing security vulnerabilities. Instead of fixing issues one by one, I identified repetitive processes and developed automated scripts to remediate issues across multiple endpoints simultaneously.</p>
-                    <p><strong>Relate:</strong> This directly applied the Systems Development Life Cycle (SDLC) in a live environment. It also addressed my SMART goal of improving my troubleshooting process for Tier 2 and Tier 3 escalations, specifically by documenting steps and testing alternatives before escalating.</p>
-                    <p><strong>Reflect & Critique:</strong> Manually patching systems was tedious and highly prone to human error, which is an inefficient way to manage an enterprise. I learned the hard way that deploying a script requires coordinating with three different departments for quality assurance and approvals. This taught me the critical value of cross-functional teamwork. Creating these scripts gave me a massive boost in my professional confidence and hard skills.</p>
-                </div>
-            </div>
+    <!-- Competency 1 -->
+    <div class="competency-card">
+      <div class="competency-meta">Competency — Critical Thinking &amp; Problem Solving</div>
+      <h3>Building a habit of evidence before action</h3>
+      <div class="goal-line"><strong>Goal:</strong> Improve my Tier 2/3 troubleshooting process — document each step and test at least two reasonable alternatives before escalating, especially when an Intune application package fails to deploy correctly.</div>
+      <p>In IT and cybersecurity you can't afford to guess. Jumping to conclusions on a Tenable vulnerability scan or a Tier 3 escalation can accidentally break systems for a large number of users, so this competency directly protects the people on the other end of every ticket.</p>
+      <div class="rrr">
+        <div class="rrr-row"><div class="label">Retell</div><p>During my rotation at Hydro One I was assigned a batch of security vulnerabilities. Instead of patching them one at a time, I looked for the repetitive pattern across tickets and built automated scripts to remediate the same issue across multiple endpoints at once.</p></div>
+        <div class="rrr-row"><div class="label">Relate</div><p>This put the Systems Development Life Cycle into practice in a live environment, and it's a direct extension of my troubleshooting goal — documenting steps and testing alternatives before escalating, just applied at scale instead of ticket-by-ticket.</p></div>
+        <div class="rrr-row"><div class="label">Reflect</div><p>Manual patching is tedious and error-prone at enterprise scale — I learned that the hard way. What I didn't expect was that deploying even a well-tested script meant coordinating sign-off across three separate departments. That taught me automation is only half the skill; the other half is earning the trust of the teams whose systems you're touching.</p></div>
+      </div>
+    </div>
 
-            <div class="item-card">
-                <h3>Portfolio: Interests and Skills (Technical Communication)</h3>
-                <p><strong>Goal:</strong> Sharpen my technical communication skills to bridge the gap between the IT department and the rest of the company, translating complex technical jargon into accessible language for end-users.</p>
+    <!-- Competency 2 -->
+    <div class="competency-card">
+      <div class="competency-meta">Competency — Agility &amp; Adaptability</div>
+      <h3>Learning the systems that run underneath everything</h3>
+      <div class="goal-line"><strong>Goal:</strong> Get fully comfortable with Microsoft Intune, Entra, and Tenable, and build the muscle to research and remediate new vulnerabilities as they appear — rather than relying on someone else to have already solved it.</div>
+      <p>The tech field doesn't hold still. An app can deploy cleanly through Intune one week and break on half the fleet the next after an unexpected update. Getting comfortable with ambiguity is less a skill I can check off and more a habit I have to keep building.</p>
+      <div class="rrr">
+        <div class="rrr-row"><div class="label">Retell</div><p>My role rotated weekly between help desk support, depot hardware setup, application packaging, and vulnerability remediation — I was rarely doing the same type of task two days in a row.</p></div>
+        <div class="rrr-row"><div class="label">Relate</div><p>University teaches these tools in isolation; the rotation forced me to see how they connect — understanding how we package and push software through the Company Portal, for instance, gave me a much clearer picture of how we deploy security patches at scale.</p></div>
+        <div class="rrr-row"><div class="label">Reflect</div><p>I started the placement unsure whether I could keep up with that much context-switching. By the second month it stopped feeling chaotic and started feeling like the same skill applied in different rooms. The honest critique: I still lean on documentation more than I'd like when a tool behaves unexpectedly — that's the next thing I want to build real fluency in.</p></div>
+      </div>
+    </div>
 
-                <div class="reflection-box">
-                    <h4>Artifact Reflection: IT Help Desk Ticket Documentation</h4>
-                    <p><strong>Retell:</strong> Working on the IT Help Desk, I constantly interacted with non-technical staff and had to context-switch between talking a frustrated user through a fix, and escalating issues to backend teams using precise jargon.</p>
-                    <p><strong>Relate:</strong> This connects to my communication competency goal of intentionally avoiding heavy IT jargon in roughly 90% of my closed tickets to ensure users understand what was fixed. It directly reflects the organizational culture concepts I learned in university regarding the observation of language and structural processes.</p>
-                    <p><strong>Reflect & Critique:</strong> While I improved my ability to shift my communication style on the fly, the rapid context-switching meant I never had the time to write a major technical instruction guide from scratch. To address this gap in my skills, I will proactively request projects involving long-form standard operating procedures in future placements.</p>
-                </div>
-            </div>
-        </section>
+    <!-- Competency 3 -->
+    <div class="competency-card">
+      <div class="competency-meta">Competency — Effective Oral &amp; Written Communication</div>
+      <h3>Translating, not just fixing</h3>
+      <div class="goal-line"><strong>Goal:</strong> Write ticket notes end-users can actually understand — avoiding heavy IT jargon in roughly 90% of closed tickets — while keeping backend notes precise enough for the teams I escalate to.</div>
+      <p>Knowing how to fix an issue isn't enough on its own; I have to be able to explain it to two very different audiences in the same afternoon. That skill matters as much for my career as the technical work does.</p>
+      <div class="rrr">
+        <div class="rrr-row"><div class="label">Retell</div><p>On the help desk I was constantly switching between talking a frustrated, non-technical user through a fix in plain language and escalating the same issue to a backend team using precise, jargon-heavy terminology.</p></div>
+        <div class="rrr-row"><div class="label">Relate</div><p>This mirrors the organizational culture concepts from my coursework — I was learning Hydro One's internal culture in real time by watching the language, structure, and approval processes each team defaulted to.</p></div>
+        <div class="rrr-row"><div class="label">Reflect &amp; critique</div><p>I got noticeably better at shifting register on the fly, but the rapid context-switching meant I never got to write a long-form technical guide from scratch — the kind of writing that actually tests whether you understand something deeply enough to teach it. That's a gap I'm going to close by proactively asking for a documentation project in my next placement, rather than waiting for one to land on my desk.</p></div>
+      </div>
+    </div>
+  </section>
 
-        <!-- E: Course Projects Section -->
-        <section id="projects" class="animate-on-scroll">
-            <h2>E. Course & Independent Projects</h2>
-            
-            <div class="item-card">
-                <h3>Vulnerability Management Program</h3>
-                <div class="tags-container">
-                    <span class="tag">Use of Engineering Tools</span>
-                    <span class="tag">Problem Analysis</span>
-                </div>
-                <div class="item-meta">Azure / Tenable / BASH / PowerShell</div>
-                <ul>
-                    <li>Simulated an end-to-end Vulnerability Management Program using Tenable, Azure VMs, PowerShell, and BASH.</li>
-                    <li>Executed authenticated Tenable Nessus scans on Azure servers, identifying vulnerabilities by risk and exploitability.</li>
-                    <li>Developed scripts to address outdated software, insecure protocols, account misconfigurations, and missing OS updates.</li>
-                </ul>
-                <div class="reflection-box">
-                    <p><strong>Reflect:</strong> This project reinforced my understanding that guessing is not an option when reviewing vulnerability scans; drawing critical conclusions based on data is vital so as not to accidentally break systems for end-users.</p>
-                </div>
-            </div>
-            
-            <div class="item-card">
-                <h3>Threat Hunt Report: Unauthorized TOR Usage</h3>
-                <div class="tags-container">
-                    <span class="tag">Investigation</span>
-                    <span class="tag">Knowledge Base for Engineering</span>
-                </div>
-                <div class="item-meta">Microsoft Defender / KQL / Forensics</div>
-                <ul>
-                    <li>Performed a simulated threat hunt on an enterprise endpoint using Microsoft Defender for Endpoint, KQL, and Azure VMs.</li>
-                    <li>Used KQL to detect TOR install, browser execution, and network connections from file, process, and network logs.</li>
-                    <li>Built a timeline of attacker activity, confirming TOR browser usage and identifying suspicious file creation.</li>
-                </ul>
-                <div class="reflection-box">
-                    <p><strong>Reflect:</strong> This simulated environment allowed me to practice combining existing knowledge to detect attack vectors, enhancing my ability to identify the significance of information regarding a specific security incident.</p>
-                </div>
-            </div>
+  <!-- PROJECTS -->
+  <section id="projects" class="reveal">
+    <div class="eyebrow">course &amp; independent projects</div>
+    <h2>Selected work</h2>
+    <div class="project-grid">
 
-            <div class="item-card">
-                <h3>Student Study Tracker</h3>
-                <div class="tags-container">
-                    <span class="tag">Design</span>
-                    <span class="tag">Life-Long Learning</span>
-                </div>
-                <div class="item-meta">Python / React / SQLite</div>
-                <ul>
-                    <li>Designed and developed a productivity web application optimized to help students organize study sessions, track focus intervals using Pomodoro techniques, and analyze study habits.</li>
-                    <li>Implemented a responsive frontend interface with React and a secure backend database using Python and SQLite for data persistence.</li>
-                </ul>
-                <div class="reflection-box">
-                    <p><strong>Reflect:</strong> Building this tracker allowed me to apply user-centric design principles, ensuring the interface remained clean, intuitive, and effective for managing demanding university workloads.</p>
-                </div>
-            </div>
+      <div class="project-card">
+        <div class="tags-row"><span class="tag">Use of Engineering Tools</span><span class="tag">Problem Analysis</span></div>
+        <h3>Vulnerability Management Program</h3>
+        <div class="stack">Azure · Tenable · PowerShell · BASH</div>
+        <ul>
+          <li>Simulated an end-to-end vulnerability management program using Tenable, Azure VMs, PowerShell, and BASH.</li>
+          <li>Ran authenticated Nessus scans on Azure servers and triaged findings by risk and exploitability.</li>
+          <li>Scripted fixes for outdated software, insecure protocols, account misconfigurations, and missing OS updates.</li>
+        </ul>
+        <div class="project-reflect">Reinforced that guessing isn't an option when reading a scan — drawing conclusions from the data, not assumptions, is what keeps a fix from breaking things for real users.</div>
+      </div>
 
-            <div class="item-card">
-                <h3>Full-Stack E-Commerce Platform</h3>
-                <div class="tags-container">
-                    <span class="tag">Design</span>
-                    <span class="tag">Economics & Project Management</span>
-                </div>
-                <div class="item-meta">JavaScript / Node.js / Express / MongoDB</div>
-                <ul>
-                    <li>Engineered a fully functional e-commerce web application featuring a dynamic product catalog, user authentication, shopping cart management, and secure checkout simulation.</li>
-                    <li>Optimized database queries and integrated RESTful APIs to ensure rapid page load speeds and smooth navigation across desktop and mobile devices.</li>
-                </ul>
-                <div class="reflection-box">
-                    <p><strong>Reflect:</strong> This project deepened my understanding of full-stack architecture, secure user data handling, and the software development lifecycle required to deploy scalable web solutions.</p>
-                </div>
-            </div>
-        </section>
+      <div class="project-card">
+        <div class="tags-row"><span class="tag">Investigation</span><span class="tag">Knowledge Base for Engineering</span></div>
+        <h3>Threat Hunt: Unauthorized TOR Usage</h3>
+        <div class="stack">Microsoft Defender · KQL · Network Forensics</div>
+        <ul>
+          <li>Ran a simulated threat hunt on an enterprise endpoint using Microsoft Defender for Endpoint, KQL, and Azure VMs.</li>
+          <li>Used KQL across file, process, and network logs to detect TOR installation, execution, and outbound connections.</li>
+          <li>Reconstructed a timeline of attacker activity and flagged suspicious file creation.</li>
+        </ul>
+        <div class="project-reflect">Sharpened my ability to connect scattered log entries into a single narrative — and to judge which details actually matter to an incident.</div>
+      </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="animate-on-scroll">
-            <h2>Contact</h2>
-            <p>I am always open to discussing new opportunities, collaborations, or simply having a chat about tech and security.</p>
-            
-            <div>
-                <a href="mailto:aksh42@my.yorku.ca" class="btn">Email Me</a>
-                <a href="https://www.linkedin.com/in/akshanshv" target="_blank" class="btn">LinkedIn</a>
-                <a href="https://github.com/akshanshv" target="_blank" class="btn">GitHub</a>
-            </div>
-        </section>
-    </main>
+      <div class="project-card">
+        <div class="tags-row"><span class="tag">Design</span><span class="tag">Life-Long Learning</span></div>
+        <h3>Student Study Tracker</h3>
+        <div class="stack">Python · React · SQLite</div>
+        <ul>
+          <li>Built a productivity web app for tracking Pomodoro-based study sessions and analyzing habits over time.</li>
+          <li>Implemented a responsive React frontend backed by a SQLite data layer.</li>
+        </ul>
+        <div class="project-reflect">A good exercise in user-centred design — keeping an interface intuitive under a workload it's meant to help manage, not add to.</div>
+      </div>
 
-    <footer>
-        <p>Akshansh Verma | aksh42@my.yorku.ca</p>
-        <p>Last Updated: August 7, 2026</p>
-    </footer>
+      <div class="project-card">
+        <div class="tags-row"><span class="tag">Design</span><span class="tag">Economics &amp; Project Management</span></div>
+        <h3>Full-Stack E-Commerce Platform</h3>
+        <div class="stack">JavaScript · Node.js · Express · MongoDB</div>
+        <ul>
+          <li>Built a full e-commerce app with a dynamic catalog, authentication, cart management, and checkout simulation.</li>
+          <li>Optimized queries and REST endpoints for fast load times across desktop and mobile.</li>
+        </ul>
+        <div class="project-reflect">Deepened my understanding of full-stack architecture and the lifecycle behind shipping something that has to scale, not just work once.</div>
+      </div>
 
-    <!-- JavaScript for Interactivity -->
-    <script>
-        // Theme Toggle Logic
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
+    </div>
+  </section>
 
-        themeToggle.textContent = 'Light Mode';
+  <!-- CONTACT -->
+  <section id="contact" class="reveal">
+    <div class="contact-box">
+      <div class="eyebrow" style="color:#8FA0FF;">get in touch</div>
+      <h2>Let's talk</h2>
+      <p>I'm always open to discussing new opportunities, collaborations, or just a good conversation about tech and security.</p>
+      <div class="hero-links">
+        <a href="mailto:AkshanshV28@gmail.com" class="btn primary">Email me</a>
+        <a href="https://www.linkedin.com/in/akshanshv" target="_blank" class="btn">LinkedIn</a>
+        <a href="https://github.com/akshanshv" target="_blank" class="btn">GitHub</a>
+      </div>
+    </div>
+  </section>
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                htmlElement.setAttribute('data-theme', 'light');
-                themeToggle.textContent = 'Dark Mode';
-            } else {
-                htmlElement.setAttribute('data-theme', 'dark');
-                themeToggle.textContent = 'Light Mode';
-            }
-        });
+</main>
 
-        // Scroll Animation Logic
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
+<footer>
+  Akshansh Verma · AkshanshV28@gmail.com · Last updated August 7, 2026
+</footer>
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+<script>
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 
-        document.querySelectorAll('.animate-on-scroll').forEach(section => {
-            observer.observe(section);
-        });
-
-        window.addEventListener('load', () => {
-            document.getElementById('home').classList.add('is-visible');
-        });
-    </script>
 </body>
 </html>
