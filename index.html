@@ -227,6 +227,16 @@ footer{
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--chip);color:var(--chip-text);
+  font-family:'IBM Plex Mono',monospace;font-size:0.82rem;
+  padding:0.75rem 1.2rem;border-radius:8px;
+  opacity:0;pointer-events:none;transition:opacity .3s ease, transform .3s ease;
+  z-index:1000;box-shadow:0 8px 24px rgba(0,0,0,0.18);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
 @media (min-width:1280px){
   main{max-width:1180px;}
 }
@@ -235,6 +245,7 @@ footer{
 <body>
 
 <div class="bg-glow"></div>
+<div class="toast" id="toast">Email copied — aksh42@my.yorku.ca</div>
 
 <header>
   <div class="nav-inner">
@@ -262,7 +273,7 @@ footer{
     <p class="lede">I lean toward a minimalist approach to engineering. I like analyzing systems, connecting technical detail to the bigger business picture, and pushing for proactive automation instead of manual fixes.</p>
     <div class="hero-links">
       <a href="#career" class="btn primary">View my work</a>
-      <a href="mailto:aksh42@my.yorku.ca" class="btn">Email me</a>
+      <a href="mailto:aksh42@my.yorku.ca" class="btn email-link">Email me</a>
       <a href="https://www.linkedin.com/in/akshanshv" target="_blank" class="btn">LinkedIn</a>
     </div>
 
@@ -460,7 +471,7 @@ footer{
       <h2>Let's talk</h2>
       <p>I'm always open to discussing new opportunities, collaborations, or just a good conversation about tech and security.</p>
       <div class="hero-links">
-        <a href="mailto:aksh42@my.yorku.ca" class="btn primary">Email me</a>
+        <a href="mailto:aksh42@my.yorku.ca" class="btn primary email-link">Email me</a>
         <a href="https://www.linkedin.com/in/akshanshv" target="_blank" class="btn">LinkedIn</a>
         <a href="https://github.com/akshanshv" target="_blank" class="btn">GitHub</a>
       </div>
@@ -485,6 +496,32 @@ toggle.addEventListener('click', () => {
 window.addEventListener('mousemove', (e) => {
   html.style.setProperty('--mx', e.clientX + 'px');
   html.style.setProperty('--my', e.clientY + 'px');
+});
+
+const toast = document.getElementById('toast');
+document.querySelectorAll('.email-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = 'aksh42@my.yorku.ca';
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).catch(() => {});
+    } else {
+      const temp = document.createElement('textarea');
+      temp.value = email;
+      document.body.appendChild(temp);
+      temp.select();
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(temp);
+    }
+
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2600);
+
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    window.location.href = 'mailto:' + email;
+  });
 });
 
 const observer = new IntersectionObserver((entries)=>{
